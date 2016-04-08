@@ -1,0 +1,39 @@
+<div class="container">
+	<h2>Tracked Post</h2>
+	<!--For posttracking html I have designed the views in table for good visibility  -->
+	<div ng-app="myApp" ng-controller="PostTrackingController">
+		<div id="text-table">
+			<table border="0">
+				    <tr>
+				    	<textarea ng-model="Text" cols="60" rows="3"></textarea>
+				    </tr>	
+					<tr>
+						<td>
+							
+							    <div ng-repeat="i in list">
+							    	<input type="radio" ng-class="{ testClass: $index == pageNumber }" ng-click="setPageNumber($index)" ng-model="$parent.radio" ng-value="i._id"/>
+      								<label>{{i.Post | limitTo : 40}}
+            						</label>
+    							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div ng-app="myApp" ng-controller="PostController">
+							
+							<button ng-click="ViewPostComment()" class="postbtn"> View Comment </button>
+							
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<button ng-click="DeletePost()" class="postbtn"> Delete the Post</button>
+<!--							
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<button ng-click="UpdatePost()" class="postbtn"> Update the Post</button>							
+-->							
+							</div>
+							
+						</td>
+					</tr>					
+			</table>
+		</div>		
+	</div>
+</div>

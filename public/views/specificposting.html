@@ -1,0 +1,23 @@
+<!--For posttracking html I have designed the views in table for good visibility  -->
+<div class="container">
+	<div ng-app="myApp" ng-controller="SpecificPostingController">
+		<H2> Post Title:</H2>
+
+			
+		<table border="0">
+			<tr>
+				<textarea ng-model="PostText" cols="60" rows="3"></textarea>
+				<h2>Comments are listed below</h2> 
+			</tr>
+			<tr>
+				<td>
+					<div ng-repeat="i in CommentList">
+  						<label>{{i.commentText| limitTo : 40}}
+						</label>
+					</div>
+				</td>
+			</tr>
+	    </table>
+	    
+	</div>	<!-- End of 
+</div>

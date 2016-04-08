@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+        <script type="text/javascript" src="js/applicationmodule.js" ></script>
+        <script type="text/javascript" src="js/Controllers.js"></script>
+        <!-- BEGIN Pre-requisites -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"> </script>
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer> </script>
+        <script>
+        
+        function start() {
+        gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '393434344852-sblmi2dn59dpnb0mnds3sv8cdrgisam9.apps.googleusercontent.com',
+          });
+          });
+         }
+        </script>  
+        <link rel="stylesheet" href="css/yourcustomcss.css" type="text/css" />
+    </head>
+    <body>
+        <div ng-controller="logincontroller">
+        <header class="header">
+        <div >
+            <table width="100%" border="0">
+            <tr>
+            <div class="westernlogo">
+            <td width="40%"><img src ="images/western%20Eng%20Logo.png" width = "300"></td>
+            </div>
+                <td width="40%"><p>{{ message }}</p></td>
+                <td>
+                <div>
+                <input type="image" ng-hide="loginStatus" class='login' ng-click="login()" src ="images/login-button.png" height="50" width="80" /> 
+                <input type="image" ng-show="loginStatus" class='login' ng-click="logout()" src ="images/logout.png" height="50" width="80"  /> 
+                </div>
+            </td>
+            </tr>
+            </table>
+        </div>
+        </header>
+        
+        <div class ="main-cont">
+          <div  ng-controller = "DropdownController"  ng-show="loginStatus">
+          <select class="dropbtn" ng-change="selectOption()" ng-model="selectedvalue">
+              <option id="select"   value=""> Select a option </option>
+			  <option id="posting"   value="posting">Posting</option>
+              <option id="posttrack" value="posttracking"> Post Tracking</option>
+              <option id="specific"  value="specificposting">Specific Posting</option>
+          </select>
+          </div>
+          {{email}}
+          
+            <table border="0" style="margin-top:100px; margin-left:150px;" ng-show="loginStatus">
+            <tr>
+            	<td>
+            	<input type="checkbox" class="checkbox" ng-model = "FB_CheckBoxState" value="Facebook">
+            	</td>
+            	<td>
+                <button ng-click="Facebooklogin()"  class="postbtn" style="width:100" >Facebook</button>
+            </tr>
+            <tr>
+            	<td>
+            	<input type="checkbox" class="checkbox" ng-model = "LinkedIn_CheckBoxState" value="LinkedIn">
+            	</td>
+            	<td>
+            	<button ng-click="LinkedInlogin()" class="postbtn" style="width:100">LinkedIn</button>
+          	    </td>
+            </tr>
+            <tr>
+            	<td>
+            	<input type="checkbox" class="checkbox" ng-model = "Twitter_CheckBoxState" value="Twitter">
+            	</td>
+            	<td>
+            	<button ng-click="Twitterlogin()" class="postbtn" style="width:100">Twitter</button>
+            	</td>
+            </tr>  
+            </table>
+          
+        <div  ng-view="">
+        </div>
+        
+       </div>
+       
+       </div>
+    </body>
+</html>
